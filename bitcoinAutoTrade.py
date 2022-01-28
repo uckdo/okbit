@@ -43,7 +43,7 @@ while True:
         now = datetime.datetime.now()
         start_time = get_start_time("KRW-BTC")
         end_time = start_time + datetime.timedelta(days=1)
-
+        print(f"지금 시간 : {now} \n시작 시간 : {start_time}")
         if start_time < now < end_time - datetime.timedelta(seconds=10):
             target_price = get_target_price("KRW-BTC", 0.5)
             current_price = get_current_price("KRW-BTC")
@@ -51,10 +51,12 @@ while True:
                 krw = get_balance("KRW")
                 if krw > 5000:
                     upbit.buy_market_order("KRW-BTC", krw*0.9995)
+                    print("매수했습니다")
         else:
             btc = get_balance("BTC")
             if btc > 0.00008:
                 upbit.sell_market_order("KRW-BTC", btc*0.9995)
+                print("전량 매도하였습니다")
         time.sleep(1)
     except Exception as e:
         print(e)
