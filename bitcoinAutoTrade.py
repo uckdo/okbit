@@ -2,6 +2,7 @@ import time
 import pyupbit
 import datetime
 import os
+import socket
 
 access = os.environ["acc_token"]
 secret = os.environ["sec_token"]
@@ -36,6 +37,8 @@ def get_current_price(ticker):
 # 로그인
 upbit = pyupbit.Upbit(access, secret)
 print("autotrade start")
+
+print("\n\nIP Address(Internal) : ",socket.gethostbyname(socket.gethostname()))
 
 # 자동매매 시작
 while True:
